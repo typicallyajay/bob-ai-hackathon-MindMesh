@@ -8,10 +8,10 @@
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
+| **Team Name** | MindMash |
 | **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Lead** | AJAY KOTHARI — 24bca068@charusat.edu.in |
+| **Members** | BHAVYA PATEL, VIDHI PATEL, VRUTA PANELIYA |
 
 ---
 
