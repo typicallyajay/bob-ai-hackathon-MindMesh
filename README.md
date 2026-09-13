@@ -1,149 +1,134 @@
-# THREATMESH
+﻿# 🚀 THREATMESH
 
-**AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant**
-
-> Don't just prioritize alerts. Reconstruct the attack.
+> **AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant**
 
 ---
 
-## Problem
+## 👥 Team
 
-Security Operations Centers receive hundreds of alerts daily from SIEMs, EDR, network monitors, and authentication systems. **80-95% are false positives.** The real attacks — the ones that matter — are buried in noise, fragmented across sources, and lack the context analysts need to act quickly.
+| Field | Value |
+|---|---|
+| **Team Name** | MindMash |
+| **Track** | AI |
+| **Team Lead** | Ajay Kothari — 24bca068@charusat.edu.in |
+| **Members** | Bhavya Patel, Vidhi Patel, Vruta Paneliya |
 
-Individual alerts from different tools about the same attack are never connected. An analyst sees a suspicious login, a PowerShell execution, and a data transfer as three separate events, not as one coordinated intrusion.
+---
 
-## Solution
+## 🎯 Problem Statement
 
-THREATMESH ingests multi-source security alerts and transforms them into coherent, explainable attack narratives.
+> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
 
-**Input:** 427 disconnected security alerts from 7 different sources.
+Security Operations Centers receive hundreds of daily alerts from disparate sources (SIEM, EDR, network, auth). 80–95% are false positives, and genuine attacks are fragmented across tools. Analysts lack the context to correlate events, assess evidence strength, and communicate findings efficiently under pressure.
 
-**Output:** Correlated incidents with threat scores, MITRE ATT&CK mappings, attack graphs, structured evidence, and commander-ready BLUF summaries — plus the ability to ask "what if this alert is a false positive?" and see the assessment change in real time.
+---
 
-## Why It's Different
+## 💡 Solution
 
-Most alert prioritization tools score individual alerts. THREATMESH reconstructs the full attack by:
+> In 2–3 sentences: What did you build? How does it solve the problem above?
 
-1. **Correlating** alerts across users, hosts, IPs, timestamps, and event sequences
-2. **Building attack graphs** that show how entities are connected
-3. **Generating structured evidence** that explains why something is classified as a threat
-4. **Running counterfactual analysis** — remove one alert and see how the conclusion changes
-5. **Using IBM Bob** as a genuine conversational investigation interface backed by real tools
+THREATMESH correlates multi-source security events into explainable attack narratives, maps evidence to MITRE ATT&CK techniques, builds an interactive entity attack graph, and provides deterministic evidence-backed scoring. It features a genuine counterfactual analysis engine to test conclusion robustness and integrates IBM Bob as a conversational investigation partner backed by real backend tools.
 
-## Key Features
+---
 
-| Feature | Description |
-|---------|-------------|
-| **Multi-Source Correlation** | Clusters alerts by identity, host, IP, temporal proximity, and attack sequence |
-| **Deterministic Threat Scoring** | Threat score (danger) + Confidence score (evidence strength), 0-100 each |
-| **MITRE ATT&CK Mapping** | Automatic technique identification backed by specific alert evidence |
-| **Interactive Attack Graph** | NetworkX-generated, React Flow-rendered entity relationship visualization |
-| **Counterfactual Analysis** | "What if this alert is false?" — re-scores with evidence removed |
-| **Evidence Engine** | Structured evidence items (Identity, Network, Sequence, Temporal, Process) |
-| **BLUF Generator** | Commander-ready summary with attack path, evidence, and recommended actions |
-| **IBM Bob Investigation** | Natural-language investigation backed by real application tools |
+## ✨ Key Features
 
-## Architecture
+- **Multi-Source Alert Correlation:** Deterministic clustering across identities, hosts, IPs, timestamps, and known attack progression sequences.
+- **Counterfactual Threat Analysis:** "What if this alert is false?" — re-scores the incident live and identifies if the attack chain breaks.
+- **MITRE ATT&CK Mapping & Attack Graph:** Automatic technique identification and NetworkX/React Flow interactive entity relationship topology.
+- **Structured BLUF Generation:** Commander-ready Bottom Line Up Front briefing with attack path, evidence, and recommended actions.
+- **IBM Bob Conversational Investigation:** Natural-language investigation interface backed by genuine application tool calls and audit logging.
 
-```
-Next.js Frontend → FastAPI Backend → PostgreSQL
-                         ↓
-                   Threat Engine
-                   ├── Correlation
-                   ├── Scoring
-                   ├── MITRE Mapper
-                   ├── Graph Builder
-                   ├── Evidence Generator
-                   ├── Counterfactual Engine
-                   └── BLUF Generator
-                         ↓
-                   IBM Bob Tool Layer
-```
+---
 
-See [docs/architecture.md](docs/architecture.md) for detailed diagrams.
-
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Category | Technologies |
-|----------|-------------|
-| **Frontend** | Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, React Flow, Recharts |
-| **Backend** | Python, FastAPI, Pydantic, SQLAlchemy, Alembic, NetworkX |
-| **Database** | PostgreSQL (Neon) |
-| **IBM** | IBM Bob (conversational investigation), watsonx.ai (optional NLG) |
-| **Testing** | pytest, Jest, React Testing Library |
+|---|---|
+| **Languages** | Python 3.13, TypeScript |
+| **Frameworks** | FastAPI, Next.js 15, React 19, Tailwind CSS, shadcn/ui |
+| **IBM Technologies** | IBM Bob (Conversational Investigation), watsonx.ai (Optional NLG) |
+| **Databases** | PostgreSQL, SQLite |
+| **Other** | NetworkX, React Flow (@xyflow/react), SQLAlchemy, Alembic, Pydantic, Recharts |
 
-## Running Locally
+---
+
+## 📁 Repository Structure
+
+```
+├── src/                  # All source code
+│   ├── backend/          # FastAPI backend, engines, scoring & tests
+│   ├── frontend/         # Next.js 15 SOC dashboard & Bob chat
+│   ├── data/             # Synthetic multi-source alert dataset generator
+│   └── scripts/          # Database seeding & reset automation
+├── docs/                 # Written documentation
+│   ├── problem-statement.md
+│   ├── solution-overview.md
+│   ├── architecture.md
+│   └── setup-guide.md
+├── demo/                 # Demo artifacts
+│   ├── screenshots/      # App screenshots
+│   ├── demo-video-link.txt  # Link to demo video
+│   └── live-demo-url.txt    # Deployment status
+├── presentation/         # Slide deck (HTML & Markdown)
+└── submission.yaml       # Structured submission metadata
+```
+
+---
+
+## ⚡ How to Run
+
+> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
 
 ```bash
-# 1. Clone and configure
-git clone https://github.com/your-org/bob-ai-hackathon-MindMesh.git
+# 1. Clone the repo
+git clone https://github.com/typicallyajay/bob-ai-hackathon-MindMesh.git
 cd bob-ai-hackathon-MindMesh
-cp src/.env.example src/.env
-# Edit src/.env with your DATABASE_URL
 
-# 2. Backend
+# 2. Backend Setup & Run
 cd src/backend
-python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate     # macOS/Linux
 pip install -r requirements.txt
-alembic upgrade head
-cd ..
-python data/generate_dataset.py
-python scripts/seed_demo.py
-cd backend
-uvicorn app.main:app --reload --port 8000
+python -m uvicorn app.main:app --port 8000
 
-# 3. Frontend (new terminal)
+# 3. Seed / Reset Demo Telemetry (Optional)
+python src/scripts/reset_demo.py
+
+# 4. Frontend Setup & Run (in a new terminal)
 cd src/frontend
 npm install
 npm run dev
 ```
 
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- Swagger docs: http://localhost:8000/docs
-
-See [docs/setup-guide.md](docs/setup-guide.md) for detailed instructions.
-
-## Testing
-
-```bash
-# Backend tests
-cd src/backend && pytest tests/ -v
-
-# Frontend tests
-cd src/frontend && npm test
-```
-
-## Demo
-
-| Artifact | Link |
-|----------|------|
-| Demo Video | [demo/demo-video-link.txt](demo/demo-video-link.txt) |
-| Screenshots | [demo/screenshots/](demo/screenshots/) |
-
-**Demo flow:**
-1. Dashboard shows 427+ alerts across 7 sources
-2. Correlation engine identifies incidents from noise
-3. Investigate highest-risk incident (threat score 90+)
-4. View attack timeline, graph, MITRE techniques, and evidence
-5. Run counterfactual: remove critical alert → score drops significantly
-6. Generate BLUF summary for decision-makers
-7. Chat with Bob to investigate interactively
-
-## Limitations
-
-- **Synthetic data only** — Uses generated security telemetry, not real SOC feeds
-- **IBM Bob integration requires API credentials** — Deterministic fallback available when credentials are not configured
-- **Not a production SOC replacement** — Hackathon project demonstrating the concept
-- **Limited attack scenarios** — 3 attack chains included; production system would need broader coverage
-- **No real-time streaming** — Batch ingestion only
-
-## What We Are Most Proud Of
-
-**The counterfactual analysis engine.** Most security tools tell you something is dangerous. THREATMESH also tells you *why* it believes that, and *what would change* if one piece of evidence turned out to be wrong. This makes threat assessments transparent, auditable, and actionable — exactly what SOC analysts need to make confident decisions under pressure.
+- Backend API Docs: http://localhost:8000/docs
+- Health Check: http://localhost:8000/api/health
 
 ---
 
-*Built for the IBM Bob AI Hackathon by Team MindMash*
+## 🖥️ Demo
+
+| Artifact | Link |
+|---|---|
+| 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
+| 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
+| 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
+| 📊 Presentation | [See presentation/slides.html](presentation/slides.html) |
+
+---
+
+## ⚠️ Known Limitations
+
+> Be honest — judges appreciate transparency over overclaiming.
+
+- **Synthetic Telemetry:** Uses generated security telemetry rather than live enterprise SOC feeds.
+- **Attack Chain Scope:** Ingests 3 representative multi-stage attack scenarios; enterprise production would cover broader kill-chains.
+- **Batch Telemetry:** Ingestion is batch-based rather than real-time streaming (e.g. Kafka).
+- **IBM Bob Integration:** Uses local deterministic tool execution fallback when remote IBM credentials are not configured.
+
+---
+
+## 🏅 What We're Most Proud Of
+
+**The Counterfactual Analysis Engine.** Most security tools tell an analyst something is dangerous, but fail to explain why or what assumptions that conclusion relies on. THREATMESH allows analysts to test "what-if" hypotheses (e.g. "What if this initial login was benign?"), recalculates threat and confidence scores, and verifies whether the attack chain remains intact — providing auditable, transparent evidence for high-stakes SOC decisions.
+
+---
