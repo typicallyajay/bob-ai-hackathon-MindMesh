@@ -1,0 +1,26 @@
+{
+  "name": "threatmesh-monorepo",
+  "version": "1.0.0",
+  "description": "THREATMESH - AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant",
+  "scripts": {
+    "install:all": "npm --prefix src/frontend install && pip install -r src/backend/requirements.txt",
+    "seed": "python src/data/generate_dataset.py && python src/scripts/seed_demo.py",
+    "reset": "python src/scripts/reset_demo.py",
+    "backend": "uvicorn src.backend.app.main:app --reload --port 8000",
+    "frontend": "npm --prefix src/frontend run dev",
+    "dev": "npm --prefix src/frontend run dev",
+    "test": "pytest src/backend/tests -v",
+    "test:backend": "pytest src/backend/tests -v",
+    "test:frontend": "npm --prefix src/frontend test",
+    "build:frontend": "npm --prefix src/frontend run build"
+  },
+  "keywords": [
+    "security",
+    "threat-intelligence",
+    "mitre-attack",
+    "correlation-engine",
+    "ibm-bob"
+  ],
+  "author": "Team MindMash",
+  "license": "Apache-2.0"
+}

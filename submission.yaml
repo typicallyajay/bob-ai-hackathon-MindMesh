@@ -1,0 +1,75 @@
+# =============================================================================
+# HACKATHON SUBMISSION METADATA
+# =============================================================================
+# Instructions:
+#   - Fill in ALL required fields (marked with # REQUIRED)
+#   - Optional fields can be left as empty strings ""
+#   - Do NOT rename this file — the evaluation pipeline reads it by name
+#   - Use double quotes around all string values
+# =============================================================================
+
+team:
+  name: "MindMash"                       # REQUIRED — e.g., "Orion Squad"
+  track: "AI"                            # REQUIRED — one of: AI | DevOps | Sustainability | Open
+  lead:
+    name: "Ajay Kothari"                 # REQUIRED — e.g., "Alice Chen"
+    email: "24bca068@charusat.edu.in"    # REQUIRED — e.g., "alice.chen@ibm.com"
+  members:
+    - name: "Bhavya Patel"               # REQUIRED — Team member 1
+      email: ""
+    - name: "Vidhi Patel"                # Add more members by copying the two lines above
+      email: ""
+    - name: "Vruta Paneliya"
+      email: ""
+
+submission:
+  title: "THREATMESH"                    # REQUIRED — Project display name
+
+  problem_statement: >                   # REQUIRED — 1-3 sentences. What problem? Who has it?
+    Security Operations Centers receive hundreds of daily alerts from disparate sources.
+    80-95% are false positives, and genuine attacks are fragmented across tools.
+    Analysts lack the ability to correlate events, assess evidence strength, and communicate findings efficiently.
+
+  solution_summary: >                    # REQUIRED — 1-3 sentences. What did you build?
+    THREATMESH correlates multi-source security events into explainable attack narratives,
+    maps evidence to MITRE ATT&CK techniques, performs counterfactual threat analysis to test
+    conclusion robustness, and uses IBM Bob as the conversational investigation interface.
+
+  key_features:                          # REQUIRED — List 3 to 5 specific features you implemented
+    - "Deterministic multi-source alert correlation using weighted entity and temporal matching"
+    - "Counterfactual analysis engine that re-scores incidents when individual alerts are removed"
+    - "Interactive attack graph visualization with MITRE ATT&CK technique mapping"
+    - "IBM Bob-powered conversational investigation with real application tool access"
+    - "Structured BLUF (Bottom Line Up Front) generation for commander-ready briefings"
+
+  tech_stack:
+    languages: ["Python", "TypeScript"]
+    frameworks: ["FastAPI", "Next.js", "Tailwind CSS", "shadcn/ui"]
+    ibm_technologies: ["IBM Bob"]
+    databases: ["PostgreSQL"]
+    other: ["NetworkX", "React Flow", "SQLAlchemy", "Alembic", "Pydantic"]
+
+  what_we_are_most_proud_of: >
+    The counterfactual analysis engine. Most security tools say something is dangerous.
+    THREATMESH also explains why, and shows what would change if one piece of evidence
+    turned out to be wrong. This makes threat assessments transparent, auditable, and
+    actionable for SOC analysts making high-stakes decisions.
+
+  known_limitations: >
+    Uses synthetic security telemetry rather than real SOC feeds.
+    IBM Bob integration requires API credentials; a deterministic fallback is available.
+    Three attack scenarios are included; production coverage would be broader.
+    Batch ingestion only, no real-time streaming.
+
+# =============================================================================
+# ARTIFACT LOCATIONS
+# These paths are relative to the repo root. Only change if you moved files.
+# =============================================================================
+artifacts:
+  source_code: "src/"
+  setup_guide: "docs/setup-guide.md"
+  architecture_doc: "docs/architecture.md"
+  demo_video: "demo/demo-video-link.txt"   # URL to hosted video (YouTube, Loom, Box)
+  live_demo: "demo/live-demo-url.txt"      # URL to deployed demo (optional)
+  screenshots: "demo/screenshots/"
+  presentation: "presentation/"
