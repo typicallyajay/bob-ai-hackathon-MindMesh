@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindAnimate from 'tailwindcss-animate';
 
 const config: Config = {
   content: [
@@ -37,11 +38,11 @@ const config: Config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'
         },
-        border: '#334155',
+        border: '#e2e8f0',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        surface: '#0f172a',
-        'surface-raised': '#1e293b',
+        surface: '#ffffff',
+        'surface-raised': '#f8fafc',
         threat: {
           critical: '#ef4444',
           high: '#f97316',
@@ -56,7 +57,7 @@ const config: Config = {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],
 };
 
 export default config;

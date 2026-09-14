@@ -31,21 +31,21 @@ export function IncidentList({ incidents }: { incidents: Incident[] }) {
             </thead>
             <tbody className="divide-y divide-border">
               {sorted.map(inc => (
-                <tr key={inc.id} className="hover:bg-white/5 transition-colors">
+                <tr key={inc.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-4 py-3">
                     <Badge variant="outline" className={severityBg(inc.severity)}>
                       <span className={`h-1.5 w-1.5 rounded-full mr-2 bg-current ${severityColor(inc.severity)}`} />
                       <span className={severityColor(inc.severity)}>{inc.severity}</span>
                     </Badge>
                   </td>
-                  <td className="px-4 py-3 font-medium text-slate-200">
+                  <td className="px-4 py-3 font-medium text-slate-800">
                     <Link href={`/incidents/${inc.id}`} className="hover:text-accent hover:underline">
                       {inc.title}
                     </Link>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-200">{inc.threat_score}/100</span>
+                      <span className="font-bold text-slate-800">{inc.threat_score}/100</span>
                       <span className="text-xs text-slate-500">{inc.confidence_score}% conf</span>
                     </div>
                   </td>

@@ -46,10 +46,12 @@ export default function IncidentPage({ params }: { params: Promise<{ id: string 
         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Command Center
       </Button>
 
-      <IncidentHeader incident={incident} />
+      <div data-tour="incident-header">
+        <IncidentHeader incident={incident} />
+      </div>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="mb-6 bg-surface-raised border border-border">
+        <TabsList className="mb-6 bg-surface-raised border border-border" data-tour="incident-tabs">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="graph">Attack Graph</TabsTrigger>
           <TabsTrigger value="mitre">MITRE ATT&CK</TabsTrigger>

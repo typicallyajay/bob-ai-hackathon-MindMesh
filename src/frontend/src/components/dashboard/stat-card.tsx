@@ -16,11 +16,11 @@ export function StatCard({ title, value, icon: Icon, trend, severityColor }: Sta
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-sm font-medium text-slate-400">{title}</p>
-            <p className="text-3xl font-bold tracking-tight text-slate-100">{value}</p>
+            <p className="text-sm font-medium text-slate-500">{title}</p>
+            <p className="text-3xl font-bold tracking-tight text-slate-900">{value}</p>
           </div>
-          <div className="p-3 bg-surface-raised rounded-lg border border-border">
-            <Icon className="h-6 w-6 text-slate-300" />
+          <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+            <Icon className="h-6 w-6 text-slate-500" />
           </div>
         </div>
         {trend && (

@@ -15,7 +15,7 @@ export default function AlertsPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-slate-100">All Alerts</h1>
+        <h1 className="text-2xl font-bold text-slate-100" data-tour="alerts-title">All Alerts</h1>
         <div className="flex gap-2">
           <Button 
             variant="outline" 

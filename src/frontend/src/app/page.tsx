@@ -4,6 +4,7 @@ import { StatCard } from "@/components/dashboard/stat-card";
 import { IncidentList } from "@/components/dashboard/incident-list";
 import { SeverityChart } from "@/components/dashboard/severity-chart";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
+import { LiveDemoPanel } from "@/components/demo/live-demo-panel";
 import { AlertCircle, AlertTriangle, Target, Bell } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -33,42 +34,54 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold tracking-tight text-slate-100">Command Center</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard 
-          title="Total Alerts (24h)" 
-          value={data.total_alerts} 
-          icon={Bell} 
+      <h1
+        className="text-2xl font-bold tracking-tight text-slate-900"
+        data-tour="command-center-title"
+      >
+        Command Center
+      </h1>
+
+      <div data-tour="stat-cards" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard
+          title="Total Alerts (24h)"
+          value={data.total_alerts}
+          icon={Bell}
         />
-        <StatCard 
-          title="Critical Incidents" 
-          value={data.critical_incidents} 
-          icon={AlertCircle} 
-          severityColor="border-l-red-500" 
+        <StatCard
+          title="Critical Incidents"
+          value={data.critical_incidents}
+          icon={AlertCircle}
+          severityColor="border-l-red-500"
         />
-        <StatCard 
-          title="High Incidents" 
-          value={data.high_incidents} 
-          icon={AlertTriangle} 
-          severityColor="border-l-orange-500" 
+        <StatCard
+          title="High Incidents"
+          value={data.high_incidents}
+          icon={AlertTriangle}
+          severityColor="border-l-orange-500"
         />
-        <StatCard 
-          title="Open Incidents" 
-          value={data.open_incidents} 
-          icon={Target} 
+        <StatCard
+          title="Open Incidents"
+          value={data.open_incidents}
+          icon={Target}
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 flex flex-col min-h-[500px]" id="incidents">
-          <IncidentList incidents={data.latest_incidents} />
+          <div data-tour="incident-list" className="flex-1">
+            <IncidentList incidents={data.latest_incidents} />
+          </div>
         </div>
         <div className="flex flex-col gap-6">
-          <SeverityChart data={data.severity_distribution} />
+          <div data-tour="severity-chart">
+            <SeverityChart data={data.severity_distribution} />
+          </div>
           <RecentActivity alerts={data.recent_alerts} />
         </div>
       </div>
+
+      {/* Live Demo Performance Panel */}
+      <LiveDemoPanel />
     </div>
   );
 }
