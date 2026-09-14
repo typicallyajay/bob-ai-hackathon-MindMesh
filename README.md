@@ -1,6 +1,8 @@
-﻿# 🚀 THREATMESH
+# 🚀 THREATMESH
 
 > **AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant**
+
+![THREATMESH Operations Console](demo/screenshots/00-threatmesh-hero.jpg)
 
 ---
 

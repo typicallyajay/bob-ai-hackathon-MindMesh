@@ -1,238 +1,515 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>THREATMESH - Presentation Deck</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THREATMESH — Presentation Deck</title>
 <style>
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 40px; }
-  .slide { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 40px 50px; margin-bottom: 40px; min-height: 480px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); page-break-after: always; display: flex; flex-direction: column; justify-content: space-between; }
-  h1 { color: #38bdf8; font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; }
-  h2 { color: #94a3b8; font-size: 1.3rem; margin-top: 0; }
-  p, li { font-size: 1.15rem; line-height: 1.6; color: #cbd5e1; }
-  ul { margin-top: 10px; padding-left: 25px; }
-  li { margin-bottom: 8px; }
-  .badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
-  .badge-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
-  .badge-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
-  .card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 20px; }
-  .metric { font-size: 2.5rem; font-weight: bold; color: #38bdf8; }
-  .footer { border-top: 1px solid #334155; padding-top: 15px; display: flex; justify-content: space-between; color: #64748b; font-size: 0.9rem; }
+  :root {
+    --bg-primary: #0c101d;
+    --bg-card: #111726;
+    --bg-card-hover: #161f33;
+    --border: rgba(148, 163, 184, 0.15);
+    --border-accent: rgba(56, 189, 248, 0.35);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-cyan: #38bdf8;
+    --accent-violet: #a78bfa;
+    --accent-emerald: #34d399;
+    --accent-amber: #fbbf24;
+    --accent-rose: #f87171;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 80px 20px;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(167, 139, 250, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(52, 211, 153, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  .deck-container {
+    width: 100%;
+    max-width: 1040px;
+  }
+  .slide {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 45px 55px;
+    margin-bottom: 35px;
+    min-height: 520px;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .slide:hover {
+    border-color: var(--border-accent);
+  }
+  .slide-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-cyan);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  p, li {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  strong { color: #f8fafc; }
+  ul { padding-left: 24px; margin-top: 14px; }
+  li { margin-bottom: 10px; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .badge-rose { background: rgba(248, 113, 113, 0.15); color: var(--accent-rose); border: 1px solid rgba(248, 113, 113, 0.35); }
+  .badge-cyan { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.35); }
+  .badge-emerald { background: rgba(52, 211, 153, 0.15); color: var(--accent-emerald); border: 1px solid rgba(52, 211, 153, 0.35); }
+  .badge-violet { background: rgba(167, 139, 250, 0.15); color: var(--accent-violet); border: 1px solid rgba(167, 139, 250, 0.35); }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .card {
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    border-color: rgba(148, 163, 184, 0.3);
+    transform: translateY(-2px);
+  }
+  .metric {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .metric-violet { color: var(--accent-violet); }
+  .metric-emerald { color: var(--accent-emerald); }
+  .metric-rose { color: var(--accent-rose); }
+  .code-block {
+    background: #080c16;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: var(--accent-cyan);
+    overflow-x: auto;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .slide-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+    font-size: 0.88rem;
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, #38bdf8 0%, #818cf8 40%, #c084fc 80%, #38bdf8 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-bar {
+    position: fixed;
+    bottom: 20px;
+    background: rgba(17, 23, 38, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    backdrop-filter: blur(16px);
+    border-radius: 30px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .nav-btn {
+    background: #1c2538;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .nav-btn:hover {
+    background: var(--accent-cyan);
+    color: #0c101d;
+    border-color: var(--accent-cyan);
+  }
+  .slide-counter {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
   @media print {
     body { background: white; color: black; padding: 0; }
-    .slide { border: none; box-shadow: none; min-height: 95vh; background: white; color: black; page-break-after: always; }
-    h1 { color: #0284c7; }
-    p, li { color: #334155; }
-    .card { background: #f8fafc; border: 1px solid #cbd5e1; }
+    .slide { page-break-after: always; min-height: 95vh; background: white; color: black; border: 1px solid #ccc; box-shadow: none; }
+    .nav-bar { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- Slide 1 -->
-<div class="slide">
-  <div>
-    <h2>IBM Bob AI Hackathon — Track: AI</h2>
-    <h1>THREATMESH</h1>
-    <p style="font-size: 1.4rem; color: #e2e8f0; font-weight: 500;">
-      AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant
-    </p>
-    <p style="color: #38bdf8; font-style: italic;">
-      "Don't just prioritize alerts. Reconstruct the attack."
-    </p>
-  </div>
-  <div class="footer">
-    <span>Team MindMash: Ajay Kothari (Lead), Bhavya Patel, Vidhi Patel, Vruta Paneliya</span>
-    <span>Slide 1 / 8</span>
-  </div>
-</div>
+<div class="deck-container" id="deck">
 
-<!-- Slide 2 -->
-<div class="slide">
-  <div>
-    <h2>01 / The Problem</h2>
-    <h1>Alert Fatigue & Fragmented Telemetry</h1>
-    <div class="grid">
-      <div class="card">
-        <div class="metric">80–95%</div>
-        <p><strong>False Positives:</strong> Modern enterprise SOCs drown under hundreds of disconnected alerts every day from SIEM, EDR, Network, DNS, and Auth feeds.</p>
-      </div>
-      <div class="card">
-        <div class="metric">3 Tools</div>
-        <p><strong>Fragmented Attack Paths:</strong> A single breach appears as 3-7 isolated logs across separate consoles with no unified narrative or provenance.</p>
+  <!-- Slide 1: Title -->
+  <div class="slide" id="slide-1">
+    <div>
+      <div class="slide-tag">IBM Bob AI Hackathon — Track: AI</div>
+      <h1 style="font-size: 3.2rem;">THREAT<span class="shimmer-text">MESH</span></h1>
+      <p style="font-size: 1.5rem; color: #e2e8f0; font-weight: 500; margin-top: 10px;">
+        AI-Powered Threat Intelligence Correlation & Alert Prioritisation Assistant
+      </p>
+      <p style="color: var(--accent-cyan); font-style: italic; font-size: 1.25rem; margin-top: 15px;">
+        &ldquo;Don't just prioritize alerts. Reconstruct the attack.&rdquo;
+      </p>
+      <div class="grid-4" style="margin-top: 40px;">
+        <div class="card">
+          <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-cyan);">Architecture</p>
+          <strong style="font-size: 1rem;">FastAPI + Next.js 15</strong>
+        </div>
+        <div class="card">
+          <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-violet);">AI Engine</p>
+          <strong style="font-size: 1rem;">IBM Bob Tool Layer</strong>
+        </div>
+        <div class="card">
+          <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-emerald);">Innovation</p>
+          <strong style="font-size: 1rem;">Counterfactual Engine</strong>
+        </div>
+        <div class="card">
+          <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-amber);">Standards</p>
+          <strong style="font-size: 1rem;">MITRE ATT&CK & BLUF</strong>
+        </div>
       </div>
     </div>
-    <ul>
-      <li>Analysts waste 40+ minutes per alert manually querying IPs, hosts, and usernames.</li>
-      <li>Black-box LLMs hallucinate non-existent CVEs and arbitrary risk scores without auditable proof.</li>
-    </ul>
-  </div>
-  <div class="footer">
-    <span>THREATMESH — Problem Statement</span>
-    <span>Slide 2 / 8</span>
-  </div>
-</div>
-
-<!-- Slide 3 -->
-<div class="slide">
-  <div>
-    <h2>02 / The Solution</h2>
-    <h1>Deterministic Reconstruction + Conversational AI</h1>
-    <p>THREATMESH ingests multi-source raw alerts and reconstructs coherent, explainable attack narratives:</p>
-    <div class="grid">
-      <div class="card">
-        <h3 style="color: #38bdf8; margin-top: 0;">Deterministic Core</h3>
-        <ul>
-          <li><strong>Entity-Anchored Correlation:</strong> Clusters via Union-Find and multi-dimensional similarity.</li>
-          <li><strong>MITRE ATT&CK Mapping:</strong> Strict deterministic technique identification backed by alert IDs.</li>
-          <li><strong>Bifurcated Scoring:</strong> Threat Score (danger) and Confidence (evidence strength) separated.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3 style="color: #60a5fa; margin-top: 0;">Explainable AI Layer</h3>
-        <ul>
-          <li><strong>Counterfactual Analysis:</strong> "What if alert X is false?" Real recalculation and impact delta.</li>
-          <li><strong>Interactive Attack Graph:</strong> Directed entity visualization (NetworkX + React Flow).</li>
-          <li><strong>IBM Bob Assistant:</strong> Conversational SOC copilot with real application tool binding.</li>
-        </ul>
-      </div>
+    <div class="slide-footer">
+      <span><strong>Team MindMash:</strong> Ajay Kothari (Lead), Bhavya Patel, Vidhi Patel, Vruta Paneliya</span>
+      <span>Slide 1 / 8</span>
     </div>
   </div>
-  <div class="footer">
-    <span>THREATMESH — Solution Overview</span>
-    <span>Slide 3 / 8</span>
-  </div>
-</div>
 
-<!-- Slide 4 -->
-<div class="slide">
-  <div>
-    <h2>03 / Architecture</h2>
-    <h1>Modular, Auditable Security Pipeline</h1>
-    <div class="card" style="margin-top: 20px;">
-      <p><strong>Pipeline Dataflow:</strong></p>
-      <p style="font-family: monospace; font-size: 1.1rem; color: #38bdf8;">
-        448 Raw Telemetry Alerts → Normalization Schema → Correlation Engine (Union-Find) → Threat Scorer & MITRE Mapper → Directed Graph Engine → Evidence & BLUF Generator → IBM Bob Tool Adapter
+  <!-- Slide 2: Problem -->
+  <div class="slide" id="slide-2">
+    <div>
+      <div class="slide-tag">01 / The Problem</div>
+      <h1>Alert Fatigue & Fragmented Telemetry</h1>
+      <div class="grid-2">
+        <div class="card">
+          <div class="metric metric-rose">80–95%</div>
+          <p><strong>False Positives:</strong> Enterprise SOCs receive 400+ disconnected alerts daily from SIEM, EDR, network, DNS, and auth tools.</p>
+        </div>
+        <div class="card">
+          <div class="metric metric-amber">40+ Mins</div>
+          <p><strong>Lost Time Per Alert:</strong> Analysts manually cross-reference IP addresses, hostnames, and user credentials across isolated dashboards.</p>
+        </div>
+      </div>
+      <ul style="margin-top: 25px;">
+        <li><strong>Fragmented Attack Paths:</strong> Multi-stage breaches appear as 3–7 isolated logs with zero narrative linking initial access to data exfiltration.</li>
+        <li><strong>Black-Box LLM Hallucinations:</strong> Standard chatbots invent non-existent CVEs and numerical risk scores without verifiable telemetry backing.</li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — Problem Statement</span>
+      <span>Slide 2 / 8</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: Solution -->
+  <div class="slide" id="slide-3">
+    <div>
+      <div class="slide-tag">02 / The Solution</div>
+      <h1>Deterministic Reconstruction + Conversational AI</h1>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px; font-size: 1.2rem;">Deterministic Core</h3>
+          <ul>
+            <li><strong>Multi-Source Correlation:</strong> Clusters raw alerts across identity, host, IP, and temporal similarity.</li>
+            <li><strong>MITRE ATT&CK Mapping:</strong> Strict technique identification backed by verifiable alert IDs.</li>
+            <li><strong>Bifurcated Scoring:</strong> Threat Score (danger) and Confidence (evidence strength) kept strictly independent.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--accent-violet); margin-bottom: 12px; font-size: 1.2rem;">Explainable AI Layer</h3>
+          <ul>
+            <li><strong>Counterfactual Threat Analysis:</strong> "What if this alert is false?" Recalculates scores live and tests chain integrity.</li>
+            <li><strong>Interactive Attack Graph:</strong> Reconstructs visual entity topologies using NetworkX and React Flow.</li>
+            <li><strong>IBM Bob Investigation Partner:</strong> Real tool access (`get_incidents`, `get_evidence`, `get_attack_graph`).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — Solution Overview</span>
+      <span>Slide 3 / 8</span>
+    </div>
+  </div>
+
+  <!-- Slide 4: Architecture -->
+  <div class="slide" id="slide-4">
+    <div>
+      <div class="slide-tag">03 / Architecture</div>
+      <h1>Modular, Auditable Security Pipeline</h1>
+      <div class="code-block">
+[ 448 Raw Telemetry Alerts: SIEM, EDR, Network, Auth, DNS, Endpoint ]
+                               │
+                               ▼
+               [ Normalization & Schema Validation ]
+                               │
+                               ▼
+        [ Deterministic Correlation Engine (Union-Find) ]
+                               │
+        ┌──────────────────────┼──────────────────────┐
+        ▼                      ▼                      ▼
+ [ Threat Scorer ]    [ MITRE ATT&CK Mapper ]   [ Attack Graph Builder ]
+(Threat & Confidence)  (Technique Mapping)      (NetworkX Topology)
+        │                      │                      │
+        └──────────────────────┼──────────────────────┘
+                               ▼
+            [ Evidence & Commander BLUF Generator ]
+                               │
+        ┌──────────────────────┴──────────────────────┐
+        ▼                                             ▼
+ [ Next.js SOC Dashboard ]               [ IBM Bob Tool Adapter ]
+(Dark Cyber UI & React Flow)             (Multi-Intent Assistant)
+      </div>
+      <div class="grid-2" style="margin-top: 15px;">
+        <p><strong>Backend:</strong> FastAPI, SQLAlchemy, SQLite/Postgres, NetworkX, Alembic (40/40 tests passing).</p>
+        <p><strong>Frontend:</strong> Next.js 15, React 19, Tailwind CSS, Lucide, Recharts, @xyflow/react.</p>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — System Architecture</span>
+      <span>Slide 4 / 8</span>
+    </div>
+  </div>
+
+  <!-- Slide 5: Differentiator -->
+  <div class="slide" id="slide-5">
+    <div>
+      <div class="slide-tag">04 / Key Differentiator</div>
+      <h1>Counterfactual Threat Analysis</h1>
+      <p>Most AI security tools tell an analyst something is malicious. THREATMESH proves <strong>how fragile that conclusion is</strong>.</p>
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="card">
+          <h3 style="color: var(--accent-rose); margin-bottom: 10px;">Base Incident Assessment</h3>
+          <p><span class="badge badge-rose">CRITICAL</span> Threat Score: <strong>96.0 / 100</strong> | Confidence: <strong>94%</strong></p>
+          <p style="margin-top: 10px;">Attack Path: <em>Suspicious External Auth → Kerberoasting → DC Privilege Escalation → Database Exfiltration</em></p>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--accent-amber); margin-bottom: 10px;">Counterfactual Simulation</h3>
+          <p><strong>Simulated Action:</strong> Remove Alert ALT-0353 (Privilege Escalation on DC-01)</p>
+          <p style="margin-top: 6px;"><strong>New Threat Score:</strong> <strong>50.0 / 100</strong> (Delta: <span style="color: var(--accent-rose); font-weight: 800;">-46.0</span>)</p>
+          <p style="margin-top: 6px;"><strong>Chain Status:</strong> <span class="badge badge-rose">ATTACK CHAIN BROKEN</span></p>
+        </div>
+      </div>
+      <p style="margin-top: 20px; font-style: italic; color: #94a3b8;">
+        Removing the privilege escalation pivot severs the external login from internal database exfiltration, proving the entire critical assessment depends on that specific finding.
       </p>
     </div>
-    <div class="grid" style="margin-top: 20px;">
-      <div>
-        <p><strong>Backend:</strong> FastAPI, SQLAlchemy, PostgreSQL / SQLite, Alembic, NetworkX, Pytest (40 tests passing).</p>
-      </div>
-      <div>
-        <p><strong>Frontend:</strong> Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, React Flow, TanStack Query.</p>
-      </div>
+    <div class="slide-footer">
+      <span>THREATMESH — Key Differentiator</span>
+      <span>Slide 5 / 8</span>
     </div>
   </div>
-  <div class="footer">
-    <span>THREATMESH — System Architecture</span>
-    <span>Slide 4 / 8</span>
+
+  <!-- Slide 6: IBM Bob AI -->
+  <div class="slide" id="slide-6">
+    <div>
+      <div class="slide-tag">05 / IBM Bob Integration</div>
+      <h1>IBM Bob: Conversational SOC Partner</h1>
+      <p>IBM Bob does not recite canned answers. Bob executes genuine application tools against the deterministic engine:</p>
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="card">
+          <strong style="color: var(--accent-cyan);">Active Tool Capabilities</strong>
+          <ul>
+            <li><code>get_incidents()</code> — Retrieves ranked incident queue</li>
+            <li><code>get_evidence(id)</code> — Queries corroborated facts</li>
+            <li><code>get_attack_graph(id)</code> — Inspects lateral hops</li>
+            <li><code>run_counterfactual(id, alert)</code> — Recalculates scores</li>
+            <li><code>generate_bluf(id)</code> — Produces executive brief</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong style="color: var(--accent-violet);">Multi-Intent Engine</strong>
+          <ul>
+            <li><strong>Natural Language Scoring:</strong> Handles freeform questions without rigid templates.</li>
+            <li><strong>Specific Incident Inquiries:</strong> Supports queries like <em>&ldquo;Tell me about incident #1&rdquo;</em>.</li>
+            <li><strong>Transparent Tool Calls:</strong> Displays exact backend functions executed for full auditability.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — IBM Bob Integration</span>
+      <span>Slide 6 / 8</span>
+    </div>
   </div>
+
+  <!-- Slide 7: Validation -->
+  <div class="slide" id="slide-7">
+    <div>
+      <div class="slide-tag">06 / Results & Validation</div>
+      <h1>Verified Benchmark Metrics</h1>
+      <div class="grid-2">
+        <div class="card">
+          <div class="metric metric-emerald">448 Alerts → 44 Incidents</div>
+          <p><strong>90% Alert Noise Reduction:</strong> 385 routine pings clustered cleanly, immediately surfacing 2 Critical real-world attack campaigns.</p>
+        </div>
+        <div class="card">
+          <div class="metric metric-cyan">40 / 40 Tests Passing</div>
+          <p><strong>100% Pytest Coverage:</strong> Rigorous validation across normalization, correlation, scoring, MITRE mapping, and counterfactuals.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 20px;">
+        <p><strong>Security & Resilience:</strong> SQL injection prevention, XSS escaping, transaction consistency rollbacks, and zero-alert empty states thoroughly tested.</p>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — Validation Metrics</span>
+      <span>Slide 7 / 8</span>
+    </div>
+  </div>
+
+  <!-- Slide 8: Team & Roadmap -->
+  <div class="slide" id="slide-8">
+    <div>
+      <div class="slide-tag">07 / Team & Roadmap</div>
+      <h1>Team MindMash & Production Horizon</h1>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">Team MindMash</h3>
+          <p><strong>Ajay Kothari:</strong> Lead Engineer — System Architecture & Core Engine</p>
+          <p><strong>Bhavya Patel:</strong> Frontend & Visual Analytics</p>
+          <p><strong>Vidhi Patel:</strong> Threat Intelligence & MITRE Modeling</p>
+          <p><strong>Vruta Paneliya:</strong> Testing, Validation & Dataset Generation</p>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--accent-emerald); margin-bottom: 12px;">Next Steps</h3>
+          <ul>
+            <li>Real-time Kafka / Syslog streaming telemetry ingestion.</li>
+            <li>Automated SOAR playbook triggers for confirmed BLUF briefings.</li>
+            <li>Graph neural network expansion for multi-cloud lateral movement.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>THREATMESH — Team MindMash</span>
+      <span>Slide 8 / 8</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- Slide 5 -->
-<div class="slide">
-  <div>
-    <h2>04 / Key Differentiator</h2>
-    <h1>Counterfactual Threat Analysis</h1>
-    <p>Most AI security tools tell an analyst something is bad. THREATMESH tells them <strong>how fragile that conclusion is</strong>.</p>
-    <div class="grid">
-      <div class="card">
-        <h3 style="color: #ef4444; margin-top: 0;">Base Incident Assessment</h3>
-        <p><span class="badge badge-red">CRITICAL</span> Threat Score: <strong>96.0/100</strong> | Confidence: <strong>94%</strong></p>
-        <p>Attack Chain: <em>Suspicious Login → Privilege Escalation → Lateral Movement → Exfiltration</em></p>
-      </div>
-      <div class="card">
-        <h3 style="color: #f59e0b; margin-top: 0;">Counterfactual Simulation</h3>
-        <p><strong>Remove:</strong> Alert ALT-0353 (Privilege Escalation on DC-01)</p>
-        <p><strong>New Threat Score:</strong> <strong>50.0/100</strong> (Delta: <span style="color: #ef4444; font-weight: bold;">-46.0</span>)</p>
-        <p><strong>Status:</strong> <span class="badge badge-red">ATTACK CHAIN BROKEN</span></p>
-      </div>
-    </div>
-    <p style="margin-top: 15px; font-style: italic; color: #94a3b8;">
-      Removing the privilege escalation pivot severs the external login from internal database exfiltration, proving the entire critical assessment depends on that specific finding.
-    </p>
-  </div>
-  <div class="footer">
-    <span>THREATMESH — Key Differentiator</span>
-    <span>Slide 5 / 8</span>
-  </div>
+<!-- Floating Navigation Bar -->
+<div class="nav-bar">
+  <button class="nav-btn" onclick="prevSlide()">&larr; Prev</button>
+  <span class="slide-counter" id="counter">Slide 1 / 8</span>
+  <button class="nav-btn" onclick="nextSlide()">Next &rarr;</button>
+  <button class="nav-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</button>
 </div>
 
-<!-- Slide 6 -->
-<div class="slide">
-  <div>
-    <h2>05 / IBM Integration</h2>
-    <h1>IBM Bob as Load-Bearing Tool Operator</h1>
-    <p>IBM Bob does not guess security facts. Bob executes genuine application tools against the deterministic engine:</p>
-    <ul>
-      <li><code>get_incidents()</code> — Retrieves sorted incident queue with threat metrics.</li>
-      <li><code>get_evidence(incident_id)</code> — Queries evidence items and importance tags.</li>
-      <li><code>get_attack_graph(incident_id)</code> — Retrieves entity topology and lateral transitions.</li>
-      <li><code>run_counterfactual(incident_id, alert_id)</code> — Executes mathematical re-scoring on reduced evidence.</li>
-      <li><code>generate_bluf(incident_id)</code> — Structures Bottom Line Up Front commander briefing.</li>
-    </ul>
-    <p style="color: #38bdf8;">Complete transparent audit logging tracks all tool calls made during investigations.</p>
-  </div>
-  <div class="footer">
-    <span>THREATMESH — IBM Bob Integration</span>
-    <span>Slide 6 / 8</span>
-  </div>
-</div>
+<script>
+  let currentSlide = 1;
+  const totalSlides = 8;
 
-<!-- Slide 7 -->
-<div class="slide">
-  <div>
-    <h2>06 / Results & Validation</h2>
-    <h1>Verified Hackathon Benchmark Metrics</h1>
-    <div class="grid">
-      <div class="card">
-        <div class="metric">448 Alerts → 44 Incidents</div>
-        <p>Massive 90% alert noise reduction. 385 routine pings clustered cleanly, surfacing 2 Critical real-world attack campaigns.</p>
-      </div>
-      <div class="card">
-        <div class="metric">40 / 40 Tests Passing</div>
-        <p>100% test pass rate across normalization, correlation, scoring, MITRE mapping, counterfactual engine, and security.</p>
-      </div>
-    </div>
-    <div class="card" style="margin-top: 20px;">
-      <p><strong>Tested Edge Cases:</strong> SQL injection payload rejection, XSS literal escaping, missing entity handling, zero-alert empty states, and external ID string resolution.</p>
-    </div>
-  </div>
-  <div class="footer">
-    <span>THREATMESH — Validation Metrics</span>
-    <span>Slide 7 / 8</span>
-  </div>
-</div>
+  function updateCounter() {
+    document.getElementById('counter').innerText = `Slide ${currentSlide} / ${totalSlides}`;
+    const target = document.getElementById(`slide-${currentSlide}`);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
 
-<!-- Slide 8 -->
-<div class="slide">
-  <div>
-    <h2>07 / Team & Roadmap</h2>
-    <h1>Team MindMash & Production Horizon</h1>
-    <div class="grid">
-      <div class="card">
-        <h3 style="color: #38bdf8; margin-top: 0;">Team MindMash</h3>
-        <p><strong>Ajay Kothari:</strong> Lead Engineer — System Architecture & Core Engine</p>
-        <p><strong>Bhavya Patel:</strong> Frontend & Visual Analytics</p>
-        <p><strong>Vidhi Patel:</strong> Threat Intelligence & MITRE ATT&CK Modeling</p>
-        <p><strong>Vruta Paneliya:</strong> Testing, Validation & Dataset Generation</p>
-      </div>
-      <div class="card">
-        <h3 style="color: #60a5fa; margin-top: 0;">Next Steps</h3>
-        <ul>
-          <li>Real-time Kafka/Syslog streaming ingestion adapter.</li>
-          <li>Automated SOAR playbook triggers for confirmed critical BLUFs.</li>
-          <li>Graph neural network expansion for multi-cloud lateral movement.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer">
-    <span>THREATMESH — Team MindMash</span>
-    <span>Slide 8 / 8</span>
-  </div>
-</div>
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      currentSlide++;
+      updateCounter();
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 1) {
+      currentSlide--;
+      updateCounter();
+    }
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      prevSlide();
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
+    }
+  });
+</script>
 
 </body>
 </html>
