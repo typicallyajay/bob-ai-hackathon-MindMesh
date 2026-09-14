@@ -20,7 +20,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   } = useDemo();
 
   return (
-    <div className={cn("min-h-screen bg-slate-50 flex text-slate-900", demoMode && "pt-7")}>
+    <div className={cn("min-h-screen bg-[#0c101d] flex text-slate-100", demoMode && "pt-7")}>
       {demoMode && (
         <DemoModeBar
           demoMode={demoMode}

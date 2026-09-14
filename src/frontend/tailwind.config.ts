@@ -31,23 +31,23 @@ const config: Config = {
           foreground: 'hsl(var(--muted-foreground))'
         },
         accent: {
-          DEFAULT: '#3b82f6',
-          foreground: 'hsl(var(--accent-foreground))'
+          DEFAULT: '#38bdf8',
+          foreground: '#0c101d'
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'
         },
-        border: '#e2e8f0',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        surface: '#ffffff',
-        'surface-raised': '#f8fafc',
+        border: 'rgba(148, 163, 184, 0.14)',
+        input: 'rgba(148, 163, 184, 0.16)',
+        ring: '#38bdf8',
+        surface: '#111726',
+        'surface-raised': '#161f33',
         threat: {
-          critical: '#ef4444',
-          high: '#f97316',
-          medium: '#eab308',
-          low: '#22c55e',
+          critical: '#f87171',
+          high: '#fb923c',
+          medium: '#fbbf24',
+          low: '#34d399',
         }
       },
       borderRadius: {

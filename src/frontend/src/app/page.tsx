@@ -35,7 +35,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <h1
-        className="text-2xl font-bold tracking-tight text-slate-900"
+        className="text-2xl font-bold tracking-tight text-slate-100"
         data-tour="command-center-title"
       >
         Command Center

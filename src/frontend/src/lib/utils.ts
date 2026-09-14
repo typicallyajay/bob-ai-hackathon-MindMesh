@@ -7,21 +7,21 @@ export function cn(...inputs: ClassValue[]) {
 
 export function severityColor(severity: string): string {
   switch (severity.toUpperCase()) {
-    case 'CRITICAL': return 'text-red-500';
-    case 'HIGH': return 'text-orange-500';
-    case 'MEDIUM': return 'text-yellow-500';
-    case 'LOW': return 'text-green-500';
+    case 'CRITICAL': return 'text-rose-400';
+    case 'HIGH': return 'text-amber-400';
+    case 'MEDIUM': return 'text-yellow-300';
+    case 'LOW': return 'text-emerald-400';
     default: return 'text-slate-400';
   }
 }
 
 export function severityBg(severity: string): string {
   switch (severity.toUpperCase()) {
-    case 'CRITICAL': return 'bg-red-500/10 border-red-500/30';
-    case 'HIGH': return 'bg-orange-500/10 border-orange-500/30';
-    case 'MEDIUM': return 'bg-yellow-500/10 border-yellow-500/30';
-    case 'LOW': return 'bg-green-500/10 border-green-500/30';
-    default: return 'bg-slate-500/10 border-slate-500/30';
+    case 'CRITICAL': return 'bg-rose-500/15 border-rose-500/30';
+    case 'HIGH': return 'bg-amber-500/15 border-amber-500/30';
+    case 'MEDIUM': return 'bg-yellow-400/15 border-yellow-400/30';
+    case 'LOW': return 'bg-emerald-500/15 border-emerald-500/30';
+    default: return 'bg-slate-500/15 border-slate-500/30';
   }
 }
 

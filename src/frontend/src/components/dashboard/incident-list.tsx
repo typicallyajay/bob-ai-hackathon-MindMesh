@@ -10,17 +10,17 @@ export function IncidentList({ incidents }: { incidents: Incident[] }) {
   const sorted = [...incidents].sort((a, b) => b.threat_score - a.threat_score);
 
   return (
-    <Card className="border-border bg-surface h-full">
-      <CardHeader className="pb-3 border-b border-border">
-        <CardTitle className="text-lg flex items-center gap-2">
-          <ShieldAlert className="h-5 w-5 text-accent" />
+    <Card className="border border-slate-800/80 bg-[#111726]/90 backdrop-blur-md shadow-lg shadow-black/20 h-full">
+      <CardHeader className="pb-3 border-b border-slate-800/80">
+        <CardTitle className="text-lg flex items-center gap-2 text-slate-100">
+          <ShieldAlert className="h-5 w-5 text-sky-400" />
           Active Incidents
         </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-surface-raised border-b border-border text-slate-400 text-left">
+            <thead className="bg-[#161f33]/90 border-b border-slate-800/80 text-slate-400 text-left">
               <tr>
                 <th className="px-4 py-3 font-medium">Severity</th>
                 <th className="px-4 py-3 font-medium">Title</th>
@@ -29,24 +29,24 @@ export function IncidentList({ incidents }: { incidents: Incident[] }) {
                 <th className="px-4 py-3 font-medium">Time</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody className="divide-y divide-slate-800/60">
               {sorted.map(inc => (
-                <tr key={inc.id} className="hover:bg-slate-50 transition-colors">
+                <tr key={inc.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="px-4 py-3">
                     <Badge variant="outline" className={severityBg(inc.severity)}>
                       <span className={`h-1.5 w-1.5 rounded-full mr-2 bg-current ${severityColor(inc.severity)}`} />
                       <span className={severityColor(inc.severity)}>{inc.severity}</span>
                     </Badge>
                   </td>
-                  <td className="px-4 py-3 font-medium text-slate-800">
-                    <Link href={`/incidents/${inc.id}`} className="hover:text-accent hover:underline">
+                  <td className="px-4 py-3 font-medium text-slate-200">
+                    <Link href={`/incidents/${inc.id}`} className="hover:text-sky-300 hover:underline">
                       {inc.title}
                     </Link>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-800">{inc.threat_score}/100</span>
-                      <span className="text-xs text-slate-500">{inc.confidence_score}% conf</span>
+                      <span className="font-bold text-slate-100">{inc.threat_score}/100</span>
+                      <span className="text-xs text-slate-400">{inc.confidence_score}% conf</span>
                     </div>
                   </td>
                   <td className="px-4 py-3">

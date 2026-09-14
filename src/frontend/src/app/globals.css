@@ -3,30 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background: 210 40% 98%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 217.2 91.2% 59.8%;
-  --radius: 0.5rem;
+  --background: 222 47% 8%;
+  --foreground: 215 25% 91%;
+  --card: 223 38% 11%;
+  --card-foreground: 215 25% 91%;
+  --popover: 223 38% 11%;
+  --popover-foreground: 215 25% 91%;
+  --primary: 199 89% 48%;
+  --primary-foreground: 222 47% 8%;
+  --secondary: 222 30% 16%;
+  --secondary-foreground: 215 25% 91%;
+  --muted: 222 30% 16%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 250 85% 75%;
+  --accent-foreground: 222 47% 8%;
+  --destructive: 0 74% 65%;
+  --destructive-foreground: 215 25% 91%;
+  --border: 222 25% 20%;
+  --input: 222 25% 20%;
+  --ring: 199 89% 48%;
+  --radius: 0.625rem;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-[#0c101d] text-slate-200 antialiased selection:bg-sky-500/30 selection:text-sky-200;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(167, 139, 250, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(52, 211, 153, 0.03) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* ─── Floating particle orbs ─── */
@@ -86,7 +91,7 @@ body {
   100% { background-position: 200% center; }
 }
 .shimmer-text {
-  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 30%, #8b5cf6 60%, #3b82f6 100%);
+  background: linear-gradient(90deg, #38bdf8 0%, #818cf8 30%, #c084fc 60%, #38bdf8 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
